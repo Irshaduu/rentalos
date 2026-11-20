@@ -1,0 +1,71 @@
+[project]
+name = "rentalos"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "django>=6.1,<6.2",
+    "psycopg[binary]>=3.2",
+]
+
+[dependency-groups]
+dev = [
+    "import-linter>=2.15",
+    "pre-commit>=4.7.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "pytest-django>=4.14.0",
+    "ruff>=0.17.0",
+]
+
+# Code checks and formatting (ADR-0005).
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+# E/W style, F real errors, I import order, UP modern Python,
+# B likely bugs, DJ Django mistakes, S security mistakes, DTZ a date or time
+# that does not know its time zone (date.today(), datetime.now()), RUF032 a
+# Decimal made from a float (Decimal(0.1)).
+select = ["E", "W", "F", "I", "UP", "B", "DJ", "S", "DTZ", "RUF032"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests check with assert, and sign in with a password made for tests.
+"**/tests/**" = ["S101", "S105", "S106"]
+"tests/**" = ["S101", "S105", "S106"]
+# Django writes migrations; their help texts make long lines.
+"**/migrations/**" = ["E501"]
+
+# Apps use only the floors below their own (ADR-0007), in the order of
+# docs/ARCHITECTURE.md, top floor first. Apps on one row never use each
+# other. An app not built yet is in brackets; they come off when it is built.
+# tests/test_layers.py runs this and reads the same floors.
+[tool.importlinter]
+root_packages = ["apps"]
+
+[[tool.importlinter.contracts]]
+name = "Apps use only the floors below their own"
+type = "layers"
+containers = ["apps"]
+layers = [
+    "(reports)",
+    "(bills)",
+    "(godown) | (staff)",
+    "(bookings)",
+    "(stock) | (customers)",
+    "users",
+    "(businesses)",
+    "core",
+]
+exhaustive = true
+
+# Tests (ADR-0005).
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+testpaths = ["tests", "apps"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["."]
+omit = [".venv/*", "*/migrations/*", "tests/*", "*/tests/*", "manage.py", "config/asgi.py", "config/wsgi.py"]

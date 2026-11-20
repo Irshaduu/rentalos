@@ -1,0 +1,57 @@
+# Checks that run before every commit (ADR-0005).
+# Install once with: uv run pre-commit install
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit]
+
+repos:
+  # Keep this version the same as ruff in uv.lock.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.5
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: plain-writing
+        name: plain writing in docs, code and screens (no em dashes, arrows or symbols)
+        language: pygrep
+        entry: "—|→|←|·|×|⚠|…"
+        files: \.(md|py|html|css|js|yml|yaml|toml)$
+        exclude: ^\.pre-commit-config\.yaml$
+      # Colours spread over many files, and CSS and JS inside templates, were
+      # lessons of an earlier project. Both are stopped here (ADR-0010).
+      - id: colours-in-tokens
+        name: colours only in static/css/tokens.css
+        language: pygrep
+        entry: '#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\('
+        files: \.css$
+        exclude: ^static/css/tokens\.css$
+      # A size in px or rem comes from a token too. Allowed: 1px and 2px
+      # lines, and media query widths (a token cannot be used there). The
+      # lab is left as chosen; its sizes become tokens when a screen is
+      # built. In a CSS comment, write "pixels".
+      - id: sizes-in-tokens
+        name: sizes only in static/css/tokens.css (the lab excepted)
+        language: pygrep
+        entry: '^(?!\s*@(media|container)\b).*?(?<![\w.])(?![12]px\b)\d*\.?\d+(px|rem)\b'
+        files: \.css$
+        exclude: ^(static/css/tokens\.css|design/lab/)
+      - id: no-inline-css-or-js
+        name: no inline style, script or event handler in HTML
+        language: pygrep
+        args: [--ignore-case]
+        entry: '\sstyle\s*=|<style\b|<script\b(?![^>]*\bsrc=)|\son[a-z]+\s*=\s*["'']'
+        files: \.html$
+      - id: no-number-box
+        name: no number box in HTML (a text box with inputmode instead)
+        language: pygrep
+        args: [--ignore-case]
+        entry: '\stype\s*=\s*["'']?number'
+        files: \.html$
+      - id: plain-commit-message
+        name: plain writing in the commit message
+        language: pygrep
+        entry: "—|→|←|·|×|⚠|…"
+        stages: [commit-msg]
