@@ -20,6 +20,7 @@ project, then checked again for this system before they were written here.
 | [0010](0010-plain-css-with-our-own-tokens.md) | Plain CSS with our own tokens; no CSS framework, no build step | Accepted |
 | [0011](0011-htmx-for-server-calls.md) | htmx 4 for server calls; small JavaScript modules for the rest | Accepted |
 | [0012](0012-ready-for-many-businesses.md) | One codebase, ready for many businesses and branches; SaaS features wait | Proposed |
+| [0013](0013-availability-by-time.md) | Availability by time: a booking holds its pieces from loading to back | Proposed |
 
 ## Rules
 

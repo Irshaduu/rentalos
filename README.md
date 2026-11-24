@@ -4,9 +4,9 @@ Runs an event equipment rental business: stock, what is available on every
 date, estimates and bookings, the godown's loading and return, final bills
 and payments.
 
-> **Status: step 0, the setup, is built.** Tools, code checks, CI and the
-> safe Django base are in place; there is no business page yet. See
-> [the plan](docs/PLAN.md).
+> **Status: step 1, the core base, has begun.** Tools, code checks, CI and
+> the safe Django base are in place, and the whole system is mapped; there
+> is no business page yet. See [the plan](docs/PLAN.md).
 
 ## Run it locally
 
@@ -40,6 +40,8 @@ You need [uv](https://docs.astral.sh/uv/) and PostgreSQL 18
 
 - [Plan](docs/PLAN.md): what is built, in what order, and where we are
 - [Modules](docs/MODULES.md): what the system does, part by part
+- [Screens](docs/SCREENS.md): every screen, who opens it, and how they link
+- [Rules](docs/rules/): each part's rules, with IDs
 - [Architecture](docs/ARCHITECTURE.md): how the code is organised
 - [Design](docs/DESIGN.md): how screens look and behave
 - [Glossary](docs/GLOSSARY.md): the one name for each thing

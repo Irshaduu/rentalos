@@ -45,8 +45,9 @@ A part is one row of `docs/MODULES.md`, like Stock or Bookings.
    `docs/GLOSSARY.md`. A point the client has not settled is written with its
    default, marked to confirm.
 2. **Design:** a main screen (one a role uses all day, like availability,
-   the booking or the return check) gets one design in the UI lab first.
-   Other screens are built straight from the components.
+   the booking or the return check) gets one design in the private lab,
+   one part ahead of its code (`docs/PLAN.md`). Other screens are built
+   straight from the components.
 3. **Plan:** a short written plan: models, screens, tests. Approved before
    code.
 4. **Build:** small commits on a branch, tests in the same commit.
@@ -57,16 +58,21 @@ A part is one row of `docs/MODULES.md`, like Stock or Bookings.
 
 ## UI lab
 
-- Lives in `design/lab/<part>/`. **Never imported by the app.**
-- Uses the real design tokens and fake data, and follows `docs/DESIGN.md`.
-- The design system is the first lab page, `design/lab/system/`: every
-  token and component in every state, the reference to check before writing
-  a screen (ADR-0010). It stays.
+- **The design system** is the one lab page in this repo,
+  `design/lab/system/`: every token and component in every state, the
+  reference to check before writing a screen (ADR-0010). It stays. **Never
+  imported by the app.**
+- **Each part's screens are sketched in a private lab,** outside this
+  repo, one part ahead of their code (`docs/PLAN.md`). A sketch is
+  throwaway code with fake data, so it never enters this public repo.
+- From step 1 on, the private lab uses the real tokens from
+  `static/css/tokens.css`, and follows `docs/DESIGN.md`.
 - A main screen gets one proposed design, with the reason it is recommended.
   A second design only when the developer asks for one; then one is chosen,
-  or parts of both are combined.
-- When the screen is built, its lab page is deleted. One screenshot and one
-  line of reasoning stay in `docs/design/`.
+  or parts of both are combined. The developer approves each design.
+- **A finished design reaches the repo in the pull request that builds its
+  screen:** the screen rebuilt clean from the components, its decisions in
+  `docs/DESIGN.md`, and one screenshot with its why in `docs/design/`.
 - A small choice (one colour, one space) gets one version, changed if
   needed.
 
@@ -161,6 +167,8 @@ A part is one row of `docs/MODULES.md`, like Stock or Bookings.
 ## Docs
 
 - **One fact, one home.** Link; never repeat.
+- **A map is drawn in Mermaid,** which GitHub shows as a picture. Its
+  `-->` links are code, not arrows in a sentence.
 - **A plan task is one line, in the step that does it.** Its detail lives
   in its home doc.
 - **No hand-written counts.** Generate them or leave them out.

@@ -4,7 +4,8 @@ What we build, in what order, and where we are.
 How we work: `CONTRIBUTING.md`. Structure: `docs/ARCHITECTURE.md`.
 Parts: `docs/MODULES.md`. Design: `docs/DESIGN.md`. Why: `docs/adr/`.
 
-**Now:** step 0, the setup, is built. Step 1, the core base, is next.
+**Now:** step 1, the core base. The whole map is drawn; the business base
+is next.
 **Alongside:** the written agreement with the client, needed before go-live,
 not before code.
 
@@ -31,6 +32,15 @@ Marks: `[x]` done, `[~]` in progress, `[ ]` to do
   Release 1 is already ready for Release 2 (`docs/MODULES.md`).
 - **Each part goes live as soon as it is built and checked**, not all at the
   end. The client's notebook runs alongside for the first weeks.
+- **The whole map first, in low detail:** every screen
+  (`docs/SCREENS.md`), the booking's journey (`docs/MODULES.md`), who may
+  do what (`docs/rules/roles.md`) and the data map
+  (`docs/ARCHITECTURE.md`). So the base is built for all of it, and each
+  part adds its own detail in its loop.
+- **Each part's screens are designed one part ahead of their code:** while
+  steps 1 to 3 are built, step 4's screens. The developer approves each
+  design. The people who will use a part try it on staging before it goes
+  live, which is also their training.
 - **Dates come from measured time.** Each step's hours are recorded
   (privately, per branch) and size the next steps. No date is given from a
   guess.
@@ -77,7 +87,7 @@ first uses it.
 | # | Step | Status |
 |---|---|---|
 | 0 | Setup | `[x]` |
-| 1 | Core base | `[ ]` |
+| 1 | Core base | `[~]` |
 | 2 | Live early | `[ ]` |
 | 3 | Stock | `[ ]` |
 | 4 | Availability and bookings | `[ ]` |
@@ -96,7 +106,9 @@ first uses it.
       its default
 - [ ] The list of the most-used items, with their photos, from the client
 - [ ] The logo and the details printed on the Loading Sheet and the bills
-- [ ] The devices each role uses, and the godown's printer
+- [x] The devices: an iPhone, an Android phone, a tablet and a Windows
+      laptop (`docs/DESIGN.md`). The printer is point 22 in
+      `docs/MODULES.md`
 
 ### Alongside: running it, from the first part live
 
@@ -125,7 +137,7 @@ first uses it.
 - [x] The user model, before any other app's first migration
 - [x] Translatable text from the first app (ADR-0009)
 - [x] The pull request template with the definition of done
-- [ ] The repository on GitHub, public; `main` pushed and protected: the
+- [x] The repository on GitHub, public; `main` pushed and protected: the
       four checks, rebase only, auto-merge, push protection (ADR-0006)
 
 ### Step 1: Core base
@@ -134,17 +146,21 @@ What every later part stands on. Each piece is re-checked for this client
 before it is built, and brings its rules into `CONTRIBUTING.md` and its
 tests in the same pull request.
 
+- [x] The whole map, in low detail: every screen, the booking's journey,
+      who may do what, the data map, the client's questions in one list,
+      and availability by time (ADR-0013)
 - [ ] The business, its branches and godowns, as ADR-0012 decides, with an
       ADR for how first: every record belongs to one business, most also to
       a branch; a link never
       crosses to another business's record; a test shows each business only
       its own records
-- [ ] Users and roles, with an ADR first: the four roles, the sign-in page,
-      a mark on every page naming what it needs, and a test of every page for
-      every role, with the answers typed by hand
+- [ ] Users and roles, with an ADR first, from `docs/rules/roles.md`: the
+      four roles, the sign-in page, a mark on every page naming what it
+      needs, a test of every page for every role, with the answers typed by
+      hand, and the Owner's Users screen
 - [ ] The page base: the base layout, the state pages (`docs/DESIGN.md`),
-      and the design system in the UI lab: tokens, components, icons
-      (with their ADR), htmx (ADR-0011)
+      and the design system in `design/lab/system/`: tokens, components,
+      icons (with their ADR), htmx (ADR-0011)
 - [ ] Money: one column and one box for every amount
 - [ ] Indian dates and numbers on screen, from one formats file
 - [ ] A double tap or a weak signal never saves a record twice: the server
