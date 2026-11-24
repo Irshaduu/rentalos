@@ -6,11 +6,12 @@ return, final bills and payments.
 
 ## Status
 
-**Step 0, the setup, is built; step 1, the core base, is next**
-(`docs/PLAN.md`). The Django project exists (`manage.py`, `config/`) with
-code checks, tests and CI. The first apps are `core` (the base model) and
-`users` (the user). Run every command through `uv run` (see `README.md`).
-Every new dependency needs an ADR first.
+**Step 0, the setup, is built. Step 1, the core base, has begun: the
+whole map is drawn, and the business base is next** (`docs/PLAN.md`). The
+Django project exists (`manage.py`, `config/`) with code checks, tests and
+CI. The first apps are `core` (the base model) and `users` (the user). Run
+every command through `uv run` (see `README.md`). Every new dependency
+needs an ADR first.
 
 ## The documents: each fact has one home
 
@@ -18,6 +19,7 @@ Every new dependency needs an ADR first.
 |---|---|
 | `docs/PLAN.md` | what we build, in what order, and **where we are now** |
 | `docs/MODULES.md` | what the system does, part by part, and when each is built |
+| `docs/SCREENS.md` | every screen: who opens it, how screens link, and each role's menu |
 | `docs/ARCHITECTURE.md` | how the code is organised |
 | `docs/DESIGN.md` | how screens look and behave; read it before any UI work |
 | `docs/GLOSSARY.md` | the one name for each thing, on screen and in code |

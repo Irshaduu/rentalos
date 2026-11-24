@@ -33,18 +33,21 @@ and no complications.
 
 ## Devices and their users
 
-| Who | Works on | To confirm with the client |
-|---|---|---|
-| Owner | phone | which phone |
-| Accountant | laptop or phone | which device |
-| Office Staff | laptop in the office; phones for the field marketing team | which devices |
-| Godown Manager | phone or tablet, in a godown with a weak mobile signal | which device; the printer |
-| Site manager | the printed Loading Sheet only (Release 1) | |
+The business uses an iPhone, an Android phone, a tablet and a Windows
+laptop.
+
+| Who | Works on |
+|---|---|
+| Owner | phone |
+| Accountant | laptop or phone |
+| Office Staff | laptop in the office; phones for the field marketing team |
+| Godown Manager | phone or tablet, in a godown with a weak mobile signal |
+| Site manager | the printed Loading Sheet only (Release 1) |
 
 - Every screen works at phone, tablet and laptop widths.
 - The sales screens work well on a phone (`docs/MODULES.md`, point 5).
-- If anyone uses an iPhone, Safari's engine matters as well as Chrome's:
-  every browser on an iPhone uses Safari's.
+- Each part is checked on the client's iPhone, on staging, before it goes
+  live: every browser on an iPhone uses Safari's engine, not Chrome's.
 
 ## Weak signal
 
@@ -106,6 +109,8 @@ before the number.
 | Date and time | 3 Oct 2026, 3:05 PM | The "Printed on" line of the Loading Sheet, payments, in India time |
 
 - A typed date is read day first: 10/11/2026 is 10 November.
+- An Indian mobile number looks like 90000 00001, however it was typed.
+  How it is kept: `docs/ARCHITECTURE.md`, Shared rules.
 
 ## Help notes
 
