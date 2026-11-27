@@ -115,6 +115,10 @@ request.
 - **Recommended for step 4's plan:** an estimate and its booking are one
   record, so one number runs from the estimate to the final bill, as in the
   approved design.
+- **Recommended for step 6's plan:** money kept from a cancelled booking is
+  saved as a cancellation charge, one more kind of extra charge, so that
+  booking's money adds up to 0 like any other (`docs/MODULES.md`, point
+  20).
 
 ```mermaid
 flowchart LR
@@ -211,7 +215,7 @@ flowchart LR
 | Missing or broken | `godown` | Yes | Pieces of one item from a return check, missing or broken: open, then recovered or charged |
 | Extra charge | `bills` | Yes | One typed total for a booking: transport, loading and unloading, washing, setup, or service staff |
 | Final bill | `bills` | Yes | The discount, the round-off, who made it and when. Its number comes when it is made, per branch and financial year, ready for GST bills later |
-| Payment | `bills` | Yes | Money received for a booking, or given back: the amount, the date, how it was paid, and who recorded it |
+| Payment | `bills` | Yes | Money received for a booking, given back, or moved to another booking of the same customer: the amount, the date, how it was paid, and who recorded it. A mixed payment is one row per way |
 
 **Where Release 2 joins.** The `staff` app links down to Release 1 and
 changes nothing in it:

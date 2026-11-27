@@ -80,6 +80,7 @@ the code (models, functions, files, addresses) and in the docs.
 | Round-off | `round_off` | roundup | Rounding the final amount, like 48,763 to 48,760 |
 | Final bill | | invoice, event bill | Rent, plus extra charges, plus missing and damage, minus the discount, plus or minus the round-off |
 | Payment | `Payment` | installment, advance (alone) | Any money received against a booking: an advance, the full amount, or one of several parts |
+| UPI | | Google Pay, GPay | Money paid from a phone app, like Google Pay or PhonePe. One of the ways a customer pays (`docs/MODULES.md`, point 19) |
 | Balance | | due, outstanding | What is still to be paid: the final bill minus all payments |
 | Billed | | | A booking whose final bill is made. It shows Balance due until the balance is 0, then Paid |
 | Paid | | settled | A billed booking whose balance is 0 |
