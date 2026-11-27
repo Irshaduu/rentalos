@@ -128,11 +128,11 @@ again:
 ## Points to settle, with the default we use
 
 None of these blocks the work. Each has a default, used until the client
-answers, and is confirmed in its part's rules. Every point is still to
-confirm. The client gets them in one list; points 8 and 9 wait for
-Release 2 and later.
+answers, and is confirmed in its part's rules. A point marked Answered
+holds the answer; every other point is still to confirm. The client gets
+them in one list; points 8 and 9 wait for Release 2 and later.
 
-| # | Point | Default |
+| # | Point | Default, or the answer |
 |---|---|---|
 | 1 | Are missing pieces charged at the purchase price, the same as broken ones? | Yes, the same rule |
 | 2 | Can Office Staff and the Godown Manager see purchase prices? | Only the Owner and the Accountant see them. Office Staff see a charge only on the Missing & Damage bill they send; the Godown Manager sees none |
@@ -152,8 +152,8 @@ Release 2 and later.
 | 16 | Who may do what (`docs/rules/roles.md`) | As in that table |
 | 17 | Does a customer often say yes on the first call, with no estimate sent? | The New estimate screen can also save it as a booking at once |
 | 18 | Who records payments? | The Accountant and the Owner |
-| 19 | How do customers pay? | Cash, UPI, bank transfer or cheque |
-| 20 | A booking with an advance is cancelled: is the advance given back? | The Owner decides each time; the Accountant records what is given back |
+| 19 | How do customers pay? | Answered: all four ways happen: cash, UPI, bank transfer and cheque. One payment is sometimes mixed, part cash and part UPI or bank transfer. Each way is saved as its own payment, on the same date, so the cash and the bank money each add up on their own |
+| 20 | A booking with an advance is cancelled: is the advance given back? | Answered: a choice each time, on the cancelled booking: give it back (all or part), keep it, or move it to another booking of the same customer. Office Staff may cancel; the Owner or the Accountant makes the choice (ROLE-40). Until all of it is given back, kept or moved, it waits in Accounts |
 | 21 | Do the pieces of one booking come back in one trip, or in parts? | In one trip: counted once, when everything is back |
 | 22 | Where is the printer for the Loading Sheet: in the godown or in the office? | In the godown; the Godown Manager prints it |
 | 23 | Is the stock list in an Excel sheet today? | If so, it is loaded once, through the same checks as Add an item. If not, the client's team types it in the app. The team adds the photos either way |

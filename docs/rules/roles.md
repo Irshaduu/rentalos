@@ -100,6 +100,7 @@ with the client (`docs/MODULES.md`, point 16). An empty cell means no.
 | ROLE-35 | Print or share the final bill | Yes | | |
 | ROLE-36 | Record a payment (point 18) | Yes | | |
 | ROLE-37 | Correct a payment, kept with who, when and what it was | Yes | | |
+| ROLE-40 | Choose what happens to the money paid on a cancelled booking (point 20) | Yes | | |
 
 ### Owner only
 

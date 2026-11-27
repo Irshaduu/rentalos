@@ -64,9 +64,10 @@ role's menu comes from this list. Who may do what on a screen:
 | Mark Out box | Owner, Godown Manager | Out in one step, or correct a line that loaded short | 5 |
 | Return check | Owner, Godown Manager | The count, in the Loading Sheet's order | 5 |
 | Missing & Damage bill | Owner, Office Staff, Accountant | The missing and broken pieces with their charges, to print or share | 5 |
-| Accounts | Owner, Accountant | Final bills to make, balances due, and the payments of the last 7 days | 6 |
+| Accounts | Owner, Accountant | Final bills to make, balances due, money on cancelled bookings still to give back, keep or move, and the payments of the last 7 days | 6 |
 | Final bill | Owner, Accountant | The extra charges, the discount and the round-off; the bill to print or share | 6 |
-| Add payment box | Owner, Accountant | One payment: the amount, the date and how it was paid | 6 |
+| Add payment box | Owner, Accountant | Money received: the amount, the date and how it was paid, with one line for each way when it is mixed (`docs/MODULES.md`, point 19) | 6 |
+| Give back or keep box | Owner, Accountant | On a cancelled booking with money paid: give it back, keep it, or move it to another booking (`docs/MODULES.md`, point 20) | 6 |
 | Owner dashboard | Owner | Only if wanted in Release 1 (`docs/MODULES.md`, point 7) | 8 |
 
 - Every screen also has the shared state pages: not found, not open to
@@ -133,4 +134,5 @@ flowchart LR
     accounts --> booking
     bill --> pay("Add payment box")
     booking --> pay
+    booking --> giveback("Give back or keep box")
 ```
